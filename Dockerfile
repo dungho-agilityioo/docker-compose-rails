@@ -9,7 +9,9 @@ WORKDIR $HOME_PATH
 
 RUN gem install bundler
 
-ADD Gemfile* $HOME/
+ADD Gemfile* $HOME_PATH/
+
+ENV BUNDLE_GEMFILE=$HOME_PATH/Gemfile BUNDLE_JOBS=2 BUNDLE_PATH=/bundle
 
 RUN bundle install
 
