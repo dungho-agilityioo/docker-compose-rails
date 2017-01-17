@@ -1,0 +1,5 @@
+<% @comments.each do |comment| %>
+  <article id="comments:<%= comment.id %>">
+    <p><%= comment.content %></p>
+  </article>
+<% end %>

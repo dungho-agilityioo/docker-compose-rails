@@ -8,4 +8,5 @@ class Product < ApplicationRecord
 	}
 
 	attribute :created_at, :date
+	has_many :comments
 end
