@@ -14,9 +14,8 @@ class CommentsController < ApplicationController
 
   # GET /comments/new
   def new
-
-    # @comment = Comment.new
-    @product = Product.find(params[:product_id])
+    @comment = Comment.new(product_id: params[:product_id])
+    render :new, change: :comments
   end
 
   # GET /comments/1/edit
@@ -29,11 +28,14 @@ class CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     product_id = comment_params[:product_id]
     if @comment.save
-      # This will change #comments
-      redirect_to product_url(product_id), change: 'comments'
+  		# This will change #flash, #comments
+  		redirect_to product_url(product_id), change: 'comments'
+  		# => Turbolinks.visit('/comments', change: ['comments'])
     else
-      # Validation failure
-      render :action => :new, change: 'new_comment'
+      @product = Product.includes(comments: [:user]).find(product_id)
+    	respond_to do |format|
+    		format.js
+    	end
     end
   end
 
