@@ -1,0 +1,11 @@
+<hr/>
+<% if @comment&.errors&.any? %>
+    <% @comment.errors.full_messages.each do |message| %>
+      <p><%= message %></p>
+    <% end %>
+<% end %>
+<%= form_for Comment.new, remote: true, id: 'new_comment', url: product_comments_path(@product) do |form| %>
+    <%= form.text_area :content %>
+    <%= form.hidden_field :product_id, :value => @product.id %>
+    <%= form.submit %>
+<% end %>
