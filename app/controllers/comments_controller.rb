@@ -32,7 +32,7 @@ class CommentsController < ApplicationController
   		redirect_to product_url(product_id), change: 'comments'
   		# => Turbolinks.visit('/comments', change: ['comments'])
     else
-      @product = Product.includes(comments: [:user]).find(product_id)
+      set_product
     	respond_to do |format|
     		format.js
     	end
@@ -72,5 +72,9 @@ class CommentsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def comment_params
       params.require(:comment).permit(:content, :product_id).merge(user_id: current_user.id)
+    end
+
+    def set_product
+      @product = Product.includes(comments: [:user]).find(params[:comment][:product_id])
     end
 end

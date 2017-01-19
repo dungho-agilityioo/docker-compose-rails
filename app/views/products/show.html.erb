@@ -21,8 +21,8 @@
 </p>
 
 
-  <div id="flash" data-turbolinks-permanent>
-    You have <%= @product.comments.count %> comments.
+  <div id="flash" data-turbolinks-temporary>
+    Product have <%= @product.comments.count %> comments.
   </div>
 <section id="comments">
 	<% @product.comments.each do |comment| %>
