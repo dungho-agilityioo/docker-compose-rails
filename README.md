@@ -4,8 +4,8 @@
 Before starting, you’ll need to have [Compose installed](https://docs.docker.com/compose/install/).
 Start and active docker-machine `docker-machine start` and `eval $(docker-machine env)`
 
-1. Clone code dockerfile from gitlab `git clone git@gitlab.asoft-python.com:g-dungho/docker-training.git`
-2. Clone rails app from github `git clone git@github.com:dungho-agilityio/rails-app.git`
+1. Clone code dockerfile from gitlab `git clone https://github.com/dungho-agilityioo/docker-compose-rails`
+2. Clone rails app from github `git clone https://github.com/dungho-agilityioo/rails-app.git`
 3. Move to docker-training folder and build image `cd docker-training` and `docker-compose build`
 4. Install gem `docker-compose run -v $(pwd)/../rails-app:/home/app -v $(pwd)/../rails-app/bundle:/bundle shop bundle install`
 5. Runing app `docker-compose up`
